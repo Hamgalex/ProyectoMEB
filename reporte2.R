@@ -21,23 +21,28 @@ hist(lifeExpectancy$Life.expectancy,
      border = "black",
      ylim = c(0, 700)
 )
+
 hist(lifeExpectancy$Adult.Mortality,
      main = "Histograma de Adult Mortality",
      xlab = "Valores",
      ylab = "Frecuencia",
      col = "skyblue",
      border = "black",
-     xlim = c(0,800)
+     xlim = c(0, 800)
 )
+
 hist(lifeExpectancy$Alcohol,
      main = "Histograma de Alcohol",
      xlab = "Valores",
      ylab = "Frecuencia",
      col = "skyblue",
      border = "black",
-     xlim = c(0,20),
-     ylim = c(0,700)
+     ylim = c(0, 700),
+     axes = FALSE
 )
+axis(2)
+axis(1, at = seq(0, 18, by = 3))
+
 hist(lifeExpectancy$BMI,
      main = "Histograma de BMI",
      xlab = "Valores",
@@ -45,43 +50,62 @@ hist(lifeExpectancy$BMI,
      col = "skyblue",
      border = "black"
 )
+
 hist(lifeExpectancy$GDP,
      main = "Histograma de GDP",
      xlab = "Valores",
      ylab = "Frecuencia",
      col = "skyblue",
      border = "black",
-     ylim = c(0,2000)
+     ylim = c(0, 2000)
 )
+
 hist(lifeExpectancy$HIV.AIDS,
      main = "Histograma de HIV AIDS",
      xlab = "Valores",
      ylab = "Frecuencia",
      col = "skyblue",
      border = "black",
-     xlim = c(0,60),
-     ylim = c(0,2500)
+     ylim = c(0, 2500),
+     axes = FALSE
 )
+axis(2)
+axis(1, at = seq(0, 55, by = 5))
+
 hist(lifeExpectancy$Income.composition.of.resources,
      main = "Histograma de Income Composition of Resources",
      xlab = "Valores",
      ylab = "Frecuencia",
      col = "skyblue",
      border = "black",
-     ylim = c(0,600)
+     ylim = c(0, 600)
 )
+
 hist(lifeExpectancy$Schooling,
      main = "Histograma de Schooling",
      xlab = "Valores",
      ylab = "Frecuencia",
      col = "skyblue",
      border = "black",
-     xlim = c(0,25)
+     axes = FALSE
 )
+axis(2)
+axis(1, at = seq(0, 22, by = 2))
+
 hist(lifeExpectancy$Total.expenditure,
      main = "Histograma de Total Expenditure",
      xlab = "Valores",
      ylab = "Frecuencia",
      col = "skyblue",
      border = "black"
+)
+
+# Boxplot
+
+boxplot(lifeExpectancy$Life.expectancy,
+        main = "Boxplot de life expectancy",
+        xlab = "Poblacion",
+        ylab = "Esperanza de vida",
+        col = "skyblue",
+        border = "black"
 )
