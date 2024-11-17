@@ -344,7 +344,8 @@ hist(data,
      ylab = "Frecuencia",
      col = "skyblue",
      border = "black",
-     ylim = c(0, 700))
+     ylim = c(0, 700),
+     xlim = c(0,1000))
 axis(2)
 axis(1, at = seq(0, 18, by = 3))
 lambda <- 1 / mean(data)
