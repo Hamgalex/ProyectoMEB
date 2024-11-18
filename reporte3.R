@@ -1,31 +1,37 @@
 Sys.setlocale("LC_CTYPE", "Spanish_Mexico.UTF-8")
-# Instala y carga el paquete si no lo tienes
+set.seed(123)
+
 library(car)
-# Reporte 2
+library(dplyr)
+
+# Read Dataset
 lifeExpectancy <- read.csv("C:/Users/hamga/Documents/maestria/1er/MEB/codigosR/ProyectoMEB/LifeExpectancyData.csv")
 lifeExpectancy
-# Omitir filas donde haya valores NA
 lifeExpectancy <- na.omit(lifeExpectancy)
 colSums(is.na(lifeExpectancy))
-
+muestra <- lifeExpectancy[sample(nrow(lifeExpectancy), 100), ]
+write.csv(muestra, file = "ProyectoMEB/graficas/reporte3/muestra100.csv", row.names = FALSE)
 
 # A
-# Matriz de dispersión con ggpairs
-ggpairs(lifeExpectancy)
+# Matriz dispersión
+png("ProyectoMEB/graficas/reporte3/matriz_dispersion.png", width = 1200, height = 1200)
+plot(muestra,
+     main = "Matriz de dispersión")
+dev.off() 
 
-cor_matrix <- cor(lifeExpectancy, use = "complete.obs")  # "complete.obs" para ignorar valores NA
+cor_matrix <- cor(muestra)
 print(cor_matrix)
 
 
 
 #B
-# Usar un modelo lineal para calcular el VIF
-modelo <- lm(Life.expectancy ~ Adult.Mortality + Alcohol + BMI + 
-               Total.expenditure + HIV.AIDS + GDP + 
-               Income.composition.of.resources + Schooling, data = lifeExpectancy)
-# Calcular VIF
+modelo <- lm(Life.expectancy ~ Adult.Mortality + Alcohol + Total.expenditure + BMI + HIV.AIDS + GDP + 
+               Income.composition.of.resources + Schooling, data = muestra)
 vif_values <- vif(modelo)
-print("Valores de VIF:")
 print(vif_values)
 
+
+#C
 summary(modelo)
+
+confint(modelo)
