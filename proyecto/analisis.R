@@ -154,7 +154,7 @@ boxplot(datos,
 ############################# GDP ##############################################################
 ################################################################################################
 
-datos <- lifeExpectancy$BMI
+datos <- lifeExpectancy$GDP
 
 histograma <- hist(datos)
 
@@ -163,22 +163,144 @@ tabla_frecuencias_histograma <- data.frame(
   Frecuencia = histograma$counts
 )
 
-write.csv(tabla_frecuencias_histograma, "C:/Users/hamga/Documents/maestria/1er/MEB/codigosR/ProyectoMEB/tablas/BMI100.csv", row.names = FALSE)
+write.csv(tabla_frecuencias_histograma, "C:/Users/hamga/Documents/maestria/1er/MEB/codigosR/ProyectoMEB/tablas/gdp100.csv", row.names = FALSE)
 
-histograma <- hist(datos,
-                   main = "Histograma de BMI",
-                   xlab = "BMI de la población",
-                   ylab = "Frecuencia",
-                   col = "skyblue",
-                   border = "black",
-                   ylim = c(0,30)
+hist(datos,
+      main = "Histograma de GDP",
+      xlab = "Producto interno bruto per cápita (USD)",
+      ylab = "Frecuencia",
+      col = "skyblue",
+      border = "black",
+     ylim = c(0,100)
 )
 
 boxplot(datos,
-        main = "Boxplot de BMI",
+        main = "Boxplot de GDP",
         xlab = "Población",
-        ylab = "BMI de la población",
+        ylab = "Producto interno bruto per cápita (USD)",
         col = "skyblue",
         border = "black",
-        ylim=c(0,80)
+        ylim = c(0,140000)
+)
+
+
+################################################################################################
+############################# VIH AIDS ##############################################################
+################################################################################################
+
+datos <- lifeExpectancy$HIV.AIDS
+
+histograma <- hist(datos)
+
+tabla_frecuencias_histograma <- data.frame(
+  Intervalo = paste(head(histograma$breaks, -1), "-", tail(histograma$breaks, -1)),
+  Frecuencia = histograma$counts
+)
+
+write.csv(tabla_frecuencias_histograma, "C:/Users/hamga/Documents/maestria/1er/MEB/codigosR/ProyectoMEB/tablas/hiv100.csv", row.names = FALSE)
+
+hist(datos,
+                   main = "Histograma de HIV AIDS",
+                   xlab = "Muertes por VIH por cada 1000 nacidos vivos",
+                   ylab = "Frecuencia",
+                   col = "skyblue",
+                   border = "black",
+     ylim=c(0,100)
+)
+
+boxplot(datos,
+        main = "Boxplot de VIH AIDS",
+        xlab = "Población",
+        ylab = "Muertes por VIH por cada 1000 nacidos vivos",
+        col = "skyblue",
+        border = "black"
+)
+
+
+################################################################################################
+############################# INCOME COMPOSITIOTN OF RESOURCES ##############################################################
+################################################################################################
+
+datos <- lifeExpectancy$Income.composition.of.resources
+
+histograma <- hist(datos)
+
+tabla_frecuencias_histograma <- data.frame(
+  Intervalo = paste(head(histograma$breaks, -1), "-", tail(histograma$breaks, -1)),
+  Frecuencia = histograma$counts
+)
+
+write.csv(tabla_frecuencias_histograma, "C:/Users/hamga/Documents/maestria/1er/MEB/codigosR/ProyectoMEB/tablas/incomecomposition100.csv", row.names = FALSE)
+
+hist(datos,
+                   main = "Histograma de Income Composition of Resources",
+                   xlab = "Índice de desarrollo humano",
+                   ylab = "Frecuencia",
+                   col = "skyblue",
+                   border = "black",
+     ylim = c(0,30)
+)
+
+boxplot(datos,
+        main = "Boxplot de Income Composition of Resources",
+        xlab = "Población",
+        ylab = "Índice de desarrollo humano",
+        col = "skyblue",
+        border = "black",
+        ylim = c(0,1)
+)
+
+
+################################################################################################
+############################# SCHOOLING ##############################################################
+################################################################################################
+
+datos <- lifeExpectancy$Schooling
+
+
+hist(datos,
+     main = "Histograma de Schooling",
+     xlab = "Años de escolaridad",
+     ylab = "frecuencia",
+     col="skyblue",
+     ylim = c(0, 30),
+     axes = FALSE
+)
+axis(2)
+axis(1, at = seq(4, 20, by = 2))
+
+
+boxplot(datos,
+        main = "Boxplot de Schooling",
+        ylab = "Años de escolaridad",
+        xlab = "Población",
+        col="skyblue",
+        border = "black",
+        ylim = c(0,20)
+)
+
+
+################################################################################################
+############################# TOTAL EXPENDITURE ################################################
+################################################################################################
+
+
+datos <- lifeExpectancy$Total.expenditure
+
+
+histograma <- hist(datos,
+                   main = "Histograma de Total Expenditure",
+                   xlab = "% de gasto del gobierno en salud respecto al gasto total",
+                   ylab = "Frecuencia",
+                   col = "skyblue",
+                   ylim = c(0,40))
+
+
+boxplot(datos,
+        main = "Boxplot de Total Expenditure",
+        xlab = "Población",
+        ylab = "% de gasto del gobierno en salud respecto al gasto total",
+        col = "skyblue",
+        border = "black",
+        ylim = c(0,14)
 )
